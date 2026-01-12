@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Prompt AI</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; text-align: center; }
+        .box { background: white; max-width: 500px; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        textarea { width: 100%; height: 120px; margin-top: 10px; padding: 10px; }
+        button { background: #007bff; color: white; border: none; padding: 12px 20px; width: 100%; margin-top: 10px; cursor: pointer; border-radius: 5px; font-weight: bold;}
+        button:hover { background: #0056b3; }
+        .file-input { margin: 20px 0; border: 2px dashed #ccc; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Upload Gambar/Video/Musik</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="file-input">
+                <input type="file" name="media_file" required>
+            </div>
+            <button type="submit" onclick="this.innerHTML='Sedang Menganalisa... Tunggu ya!';">BUAT PROMPT SEKARANG</button>
+        </form>
+
+        {% if error %}
+            <p style="color: red; margin-top: 10px;">{{ error }}</p>
+        {% endif %}
+
+        {% if result %}
+            <h3 style="margin-top: 20px;">Hasil Prompt:</h3>
+            <textarea>{{ result }}</textarea>
+            <p><small>Copy teks di atas untuk dipakai di AI Generator.</small></p>
+        {% endif %}
+    </div>
+</body>
+</html>
